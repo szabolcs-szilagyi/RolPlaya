@@ -9,26 +9,22 @@ import Players.Messages exposing (..)
 
 
 fetchAll : Cmd Msg
-
 fetchAll =
     Http.get collectionDecoder fetchAllUrl
         |> Task.perform FetchAllFail FetchAllDone
 
 
 fetchAllUrl : String
-
 fetchAllUrl =
     "http://localhost:4000/players"
 
 
 collectionDecoder : Decode.Decoder (List Player)
-
 collectionDecoder =
     Decode.list memberDecoder
 
 
 memberDecoder : Decode.Decoder Player
-
 memberDecoder =
     Decode.object3 Player
         ("id" := Decode.int)
@@ -37,13 +33,11 @@ memberDecoder =
 
 
 saveUrl : PlayerId -> String
-
 saveUrl playerId =
     "http://localhost:4000/players/" ++ (toString playerId)
 
 
 saveTask : Player -> Task.Task Http.Error Player
-
 saveTask player =
     let
         body =
@@ -63,14 +57,12 @@ saveTask player =
 
 
 save : Player -> Cmd Msg
-
 save player =
     saveTask player
         |> Task.perform SaveFail SaveSuccess
 
 
 memberEncoded : Player -> Encode.Value
-
 memberEncoded player =
     let
         list =
