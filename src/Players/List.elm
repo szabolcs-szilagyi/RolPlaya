@@ -8,7 +8,6 @@ import Players.Models exposing (Player)
 
 
 view : List Player -> Html Msg
-
 view players =
     div []
         [ nav players
@@ -17,14 +16,12 @@ view players =
 
 
 nav : List Player -> Html Msg
-
 nav players =
     div [ class "clearfix mb2 white bg-black" ]
         [ div [ class "left p2" ] [ text "Players" ] ]
 
 
 list : List Player -> Html Msg
-
 list players =
     div [ class "p2" ]
         [ table []
@@ -42,7 +39,6 @@ list players =
 
 
 editBtn : Player -> Html Msg
-
 editBtn player =
     button
         [ class "btn regular"
@@ -52,7 +48,6 @@ editBtn player =
 
 
 playerRow : Player -> Html Msg
-
 playerRow player =
     tr []
         [ td [] [ text (toString player.id) ]
